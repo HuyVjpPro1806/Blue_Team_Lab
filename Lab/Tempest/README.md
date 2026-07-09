@@ -72,7 +72,8 @@ The hacker found and read a file containing sensitive information, including Ben
 
 Next, the hacker explored which ports and services were open, thereby discovering potential vulnerabilities on the victim's machine.
 
-![image.png](image%2011.png)
+<img width="891" height="181" alt="image" src="https://github.com/user-attachments/assets/c6cb2f09-864a-4de0-9a2b-b0fb99b2edc1" />
+
 
 The hacker then downloaded a new executable file, ch.exe. By filtering by the executable file name, we see that the hacker used this file to establish a reverse socks proxy to access the internal services hosted on the machine. After inputting the hash of the executable file into VirusTotal, we discovered it was a chisel tool, a network tunneling tool often used by hackers to gain access to internal networks via reverse SOCKS proxies.
 
@@ -80,13 +81,15 @@ The hacker then downloaded a new executable file, ch.exe. By filtering by the ex
 
 After gaining access to the internal network, the hacker proceeded to download two files, spf.exe and final.exe, attempting to escalate privileges.
 
-![image.png](image%2012.png)
+<img width="760" height="377" alt="image" src="https://github.com/user-attachments/assets/44a5f620-8711-4efe-9090-c210e73c0abc" />
+
 
 ![image.png](image%2013.png)
 
 How can one know if that executable file can be used to escalate privileges? I uploaded the spf.exe hash to VirusTotal.
 
-![image.png](image%2014.png)
+<img width="833" height="417" alt="image" src="https://github.com/user-attachments/assets/92becd45-fa20-4933-a1f3-c8b21281da9a" />
+
 
 This executable file, also known as the printspoofer tool, allows privilege escalation from SeImpersonatePrivilege to System privileges. Here, the hacker continues to exploit another security vulnerability, CVE-2020-1048. You can read more about this vulnerability in the article.: [https://itm4n.github.io/printspoofer-abusing-impersonate-privileges/](https://itm4n.github.io/printspoofer-abusing-impersonate-privileges/)
 
