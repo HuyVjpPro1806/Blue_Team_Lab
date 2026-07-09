@@ -43,7 +43,7 @@ Splunk query:
 `index=* EventCode=1 host="WS3" "WindowsUpdate.dll"
 | table _time, ParentImage, ParentCommandLine, Image, CommandLine, CurrentDirectory`
 
-![image.png](image%204.png)
+<img width="1920" height="112" alt="image" src="https://github.com/user-attachments/assets/33f4bffd-c918-4d98-ac72-88485ef51191" />
 
 # **Persistence & Defense Evasion**
 
@@ -51,7 +51,8 @@ Splunk query:
 
 Splunk query: `index=* EventCode=13 host="WS3" "WindowsUpdate.dll”`
 
-![image.png](image%205.png)
+<img width="1558" height="327" alt="image" src="https://github.com/user-attachments/assets/1aa3a58c-c4be-41ec-a752-18c023e132ea" />
+
 
 ## Q7: To evade detection, the attacker executed a command to disable endpoint protection. What command was used to weaken real-time monitoring?
 
@@ -67,7 +68,8 @@ Splunk query:
 
 Splunk query like Q7
 
-![image.png](image%208.png)
+<img width="1910" height="188" alt="image" src="https://github.com/user-attachments/assets/a941bbf1-90dd-4a13-85cc-94c4a7c3857a" />
+
 
 ## Q9: Log records indicate several event categories were erased from the system. What logs did the attacker clear to cover their tracks?
 
@@ -83,11 +85,13 @@ Splunk query: :
 `index=* EventCode=1 "WindowsUpdate.dll"
 | table _time, ParentImage, ParentCommandLine, Image, CommandLine, CurrentDirectory, host` 
 
-![image.png](image%2010.png)
+<img width="1920" height="529" alt="image" src="https://github.com/user-attachments/assets/7583d92a-a7a1-4fe2-9425-cb75531fdad1" />
+
 
 Splunk query: `index=* "BCleaner.exe" EventID=29` 
 
-![image.png](image%2011.png)
+<img width="1901" height="593" alt="image" src="https://github.com/user-attachments/assets/5e784c42-c44c-40f7-ab21-d53b160feee8" />
+
 
 ## Q11: While expanding control over the network, a file containing dumped credentials was created. What is the name of the file used to store the stolen credentials?
 
@@ -110,7 +114,8 @@ Splunk query:
 
 `index=* EventCode=1 "WindowsUpdate.dll"  CommandLine="C:\\Windows\\system32\\cmd.exe /C ntdsutil \"activate instance ntds\" \"ifm\" \"create full C:\\temp_l0gs\" q q”`
 
-![image.png](image%2014.png)
+<img width="1898" height="469" alt="image" src="https://github.com/user-attachments/assets/479a0c20-2e46-479e-9b55-5ddaa75fdf51" />
+
 
 ## Q13: To restrict access to the remote session, the attacker configured a password. What password was set for the remote tool?
 
@@ -119,7 +124,8 @@ Splunk query:
 `index=* EventCode=1 host="WS3" "WindowsUpdate.dll"
 | table _time, ParentImage, ParentCommandLine, Image, CommandLine, CurrentDirectory`
 
-![image.png](image%2015.png)
+<img width="1899" height="865" alt="image" src="https://github.com/user-attachments/assets/7fea6314-1ec4-4357-a48d-8e18c973f398" />
+
 
 # **Lateral Movement & Command and Control (C2)**
 
@@ -190,13 +196,15 @@ Splunk query:
 
 ![image.png](image%2024.png)
 
-![image.png](image%2025.png)
+<img width="1846" height="603" alt="image" src="https://github.com/user-attachments/assets/a94e0728-a5d9-4482-85a1-7c62f74b082b" />
+
 
 ## Q21: Instead of dropping a typical ransom note, the attacker left behind a uniquely named file. What is the name of the note that was dropped?
 
 Splunk query: `index=* EventCode=11 host="DC01”`
 
-![image.png](image%2026.png)
+<img width="738" height="351" alt="image" src="https://github.com/user-attachments/assets/74c6feb8-55e4-4cdb-adac-5935b04e85bc" />
+
 
 ## Q22: After compromising the domain controller, the attacker stored tools in a sensitive location. What is the full path of the directory used for staging their tools?
 
