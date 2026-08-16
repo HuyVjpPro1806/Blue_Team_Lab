@@ -4,7 +4,7 @@
 
 # Blue Team Lab
 
-**Bộ sưu tập write-up thực hành Blue Team, SOC Investigation, DFIR và Threat Hunting.**
+**A collection of hands-on Blue Team write-ups focused on SOC investigation, DFIR, threat hunting, and SIEM analysis.**
 
 ![Blue Team](https://img.shields.io/badge/Blue%20Team-SOC%20Analyst-2563eb?style=for-the-badge&logo=securityscorecard&logoColor=white)
 ![DFIR](https://img.shields.io/badge/DFIR-Incident%20Response-16a34a?style=for-the-badge&logo=windows&logoColor=white)
@@ -15,17 +15,17 @@
 
 ---
 
-## Tổng quan
+## Overview
 
-Repository này tổng hợp các bài lab mình đã thực hành trong quá trình học Blue Team. Mỗi lab được viết theo hướng một case điều tra thực tế: bắt đầu từ scenario, phân tích log, truy vấn SIEM, lần theo dấu vết attacker và đưa ra câu trả lời dựa trên bằng chứng.
+This repository contains hands-on Blue Team labs completed as part of my cybersecurity learning journey. Each lab is written like a real investigation case: starting from a scenario, analyzing logs, querying SIEM data, following attacker activity, and answering each question with evidence.
 
-Mục tiêu không chỉ là hoàn thành câu hỏi của lab, mà còn rèn tư duy điều tra:
+The goal is not only to complete the lab questions, but also to build a stronger investigation mindset:
 
 > **Follow the evidence. Build the timeline. Understand the attack.**
 
 ## Lab Index
 
-| # | Lab | Chủ đề chính | Công cụ / dữ liệu | Trạng thái |
+| # | Lab | Main Focus | Tools / Data | Status |
 | --- | --- | --- | --- | --- |
 | 1 | [Boss Of The SOC v1](./Lab/Boss%20Of%20The%20SOC%20v1%20Lab) | APT, website defacement, ransomware, kill chain | Splunk, web logs, Sysmon | Completed |
 | 2 | [ElasticCase](./Lab/ElasticCase%20Lab) | Malicious file, process tree, registry, PowerShell, pivoting | Elastic SIEM, Windows/Linux logs | Completed |
@@ -37,41 +37,41 @@ Mục tiêu không chỉ là hoàn thành câu hỏi của lab, mà còn rèn t�
 | 8 | [ShadowRoast](./Lab/ShadowRoast%20Lab) | Initial access, registry persistence, AD activity, privilege escalation | Splunk, Windows/Sysmon logs | Completed |
 | 9 | [Tempest](./Lab/Tempest) | Malicious document, C2 traffic, EVTX timeline, network forensics | Wireshark, EvtxECmd, Timeline Explorer, CyberChef | Completed |
 
-## Nội dung chính
+## What This Repository Covers
 
-- Phân tích log Windows Security, Sysmon, PowerShell và Active Directory.
-- Truy vấn SIEM bằng Splunk SPL và Elastic/KQL.
-- Điều tra process creation, command line, file creation, registry modification và network connection.
-- Dựng timeline tấn công từ initial access đến impact.
-- Tìm IOC: IP, domain, hash, username, hostname, file path và process ID.
-- Mapping hành vi attacker theo MITRE ATT&CK.
-- Viết báo cáo điều tra có bằng chứng rõ ràng bằng ảnh chụp và truy vấn.
+- Analyzing Windows Security, Sysmon, PowerShell, and Active Directory logs.
+- Querying SIEM data with Splunk SPL and Elastic/KQL.
+- Investigating process creation, command lines, file creation, registry modification, and network connections.
+- Reconstructing attacker timelines from initial access to impact.
+- Identifying IOCs such as IP addresses, domains, hashes, usernames, hostnames, file paths, and process IDs.
+- Mapping attacker behavior to MITRE ATT&CK techniques.
+- Writing evidence-based investigation reports with screenshots and queries.
 
-## Kỹ năng thực hành
+## Skills Practiced
 
-| Nhóm kỹ năng | Nội dung |
+| Skill Area | Coverage |
 | --- | --- |
-| SOC Triage | Xác định alert, host, user, timestamp và phạm vi điều tra |
-| Windows Forensics | Security Event Log, Sysmon Event ID, process tree, registry, file activity |
-| Active Directory | Kerberoasting, DCSync, Pass-the-Hash, lateral movement, account compromise |
-| Network Forensics | HTTP/DNS analysis, C2 traffic, PCAP inspection, suspicious IP/domain pivoting |
+| SOC Triage | Identifying alerts, hosts, users, timestamps, and investigation scope |
+| Windows Forensics | Security Event Logs, Sysmon Event IDs, process trees, registry activity, and file activity |
+| Active Directory | Kerberoasting, DCSync, Pass-the-Hash, lateral movement, and account compromise |
+| Network Forensics | HTTP/DNS analysis, C2 traffic, PCAP inspection, and suspicious IP/domain pivoting |
 | Malware Behavior | Payload execution, persistence, credential access, defense evasion, ransomware impact |
-| Reporting | Ghi lại truy vấn, bằng chứng, câu trả lời và luồng tấn công một cách dễ theo dõi |
+| Reporting | Documenting queries, evidence, answers, and attack flow in a clear format |
 
 ## Tools
 
-| Tool | Mục đích sử dụng |
+| Tool | Purpose |
 | --- | --- |
-| Splunk | Truy vấn, lọc và tương quan log trong các lab SOC |
-| Elastic SIEM | Điều tra endpoint, process, network và authentication events |
-| Sysmon | Theo dõi process creation, network connection, file/registry activity |
-| Wireshark | Phân tích PCAP và lưu lượng mạng |
-| EvtxECmd | Parse Windows EVTX sang CSV |
-| Timeline Explorer | Dựng và đọc timeline sự kiện |
-| CyberChef | Decode, deobfuscation, phân tích chuỗi và dữ liệu mã hóa |
-| MITRE ATT&CK | Mapping tactic/technique để hiểu hành vi attacker |
+| Splunk | Searching, filtering, and correlating logs in SOC labs |
+| Elastic SIEM | Investigating endpoint, process, network, and authentication events |
+| Sysmon | Tracking process creation, network connections, file activity, and registry activity |
+| Wireshark | Analyzing PCAP files and network traffic |
+| EvtxECmd | Parsing Windows EVTX files into CSV |
+| Timeline Explorer | Reviewing event timelines |
+| CyberChef | Decoding, deobfuscation, and string/data analysis |
+| MITRE ATT&CK | Mapping tactics and techniques to attacker behavior |
 
-## Phương pháp điều tra
+## Investigation Methodology
 
 ```text
 Alert / Scenario
@@ -98,73 +98,25 @@ Impact / Exfiltration
 Timeline + Findings
 ```
 
-## Cấu trúc repository
+## Repository Structure
 
 ```text
 Blue_Team_Lab/
-├── Lab/
-│   ├── Boss Of The SOC v1 Lab/
-│   ├── ElasticCase Lab/
-│   ├── FalconEye Lab/
-│   ├── GhostConnect _TA583_Lab/
-│   ├── Kerberoasted Lab/
-│   ├── Poisoned PyTorch Lab/
-│   ├── Rhysida Lab/
-│   ├── ShadowRoast Lab/
-│   └── Tempest/
-├── note.md
-└── README.md
+|-- Lab/
+|   |-- Boss Of The SOC v1 Lab/
+|   |-- ElasticCase Lab/
+|   |-- FalconEye Lab/
+|   |-- GhostConnect _TA583_Lab/
+|   |-- Kerberoasted Lab/
+|   |-- Poisoned PyTorch Lab/
+|   |-- Rhysida Lab/
+|   |-- ShadowRoast Lab/
+|   `-- Tempest/
+`-- README.md
 ```
 
-Mỗi lab thường bao gồm:
+Each lab usually contains:
 
-- File write-up Markdown.
-- Ảnh minh họa trong thư mục `images/` hoặc ảnh đi kèm lab.
-- Scenario, câu hỏi, truy vấn, bằng chứng và câu trả lời.
-
-## Tài liệu ghi chú
-
-Ngoài các bài lab, repository còn có file [note.md](./note.md) dùng để tra cứu nhanh Windows Event ID, Sysmon Event ID và quy trình điều tra gợi ý khi phân tích log.
-
-## Ví dụ truy vấn thường dùng
-
-```spl
-index=* source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1
-| table _time host User ParentImage ParentCommandLine Image CommandLine ProcessId ParentProcessId
-| sort 0 _time
-```
-
-```spl
-index=* source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=3
-| table _time host Image SourceIp DestinationIp DestinationPort Protocol
-| sort 0 _time
-```
-
-```spl
-index=* EventCode=4624
-| table _time host Account_Name Logon_Type IpAddress WorkstationName AuthenticationPackageName
-| sort 0 _time
-```
-
-## Cách sử dụng
-
-Clone repository:
-
-```bash
-git clone https://github.com/HuyVjpPro1806/Blue_Team_Lab.git
-cd Blue_Team_Lab
-```
-
-Mở thư mục `Lab/`, chọn một bài lab và đọc file Markdown tương ứng. Nên đọc scenario trước, sau đó đi lần lượt từng câu hỏi để hiểu cách truy vấn, pivot và kết luận.
-
-## Ghi chú
-
-Nội dung trong repository chỉ phục vụ mục đích học tập, nghiên cứu phòng thủ và nâng cao kỹ năng điều tra an toàn thông tin. Các kỹ thuật tấn công được nhắc đến chỉ được trình bày trong bối cảnh phân tích, phát hiện và ứng phó sự cố.
-
----
-
-<div align="center">
-
-**Nếu repository hữu ích, hãy để lại một star để ủng hộ quá trình học Blue Team.**
-
-</div>
+- A Markdown write-up file.
+- Screenshots stored in an `images/` folder or placed with the lab.
+- Scenario, questions, queries, evidence, and final answers.
