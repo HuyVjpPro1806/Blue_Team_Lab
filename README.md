@@ -1,167 +1,132 @@
 <div align="center">
 
-# 🛡️ Blue Team Lab
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,45:2563eb,100:16a34a&height=210&section=header&text=Blue%20Team%20Lab&fontSize=52&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=SOC%20Investigation%20%7C%20DFIR%20%7C%20Threat%20Hunting%20%7C%20SIEM%20Analysis&descAlignY=58&descSize=16" alt="Blue Team Lab banner" />
 
-### Windows Forensics • SOC Investigation • Malware Analysis • Threat Hunting
+# Blue Team Lab
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,50:2563eb,100:22c55e&height=180&section=header&text=Blue%20Team%20Lab&fontSize=48&fontColor=ffffff&animation=fadeIn&fontAlignY=35&desc=Hands-on%20SOC%20Investigation%20%7C%20DFIR%20%7C%20Threat%20Hunting&descAlignY=58&descSize=16" />
+**Bộ sưu tập write-up thực hành Blue Team, SOC Investigation, DFIR và Threat Hunting.**
 
-<br>
-
-![Blue Team](https://img.shields.io/badge/Blue%20Team-SOC%20Analyst-2563eb?style=for-the-badge\&logo=securityscorecard\&logoColor=white)
-![DFIR](https://img.shields.io/badge/DFIR-Windows%20Forensics-22c55e?style=for-the-badge\&logo=windows\&logoColor=white)
-![Splunk](https://img.shields.io/badge/Splunk-Log%20Analysis-f97316?style=for-the-badge\&logo=splunk\&logoColor=white)
-![Wireshark](https://img.shields.io/badge/Wireshark-Network%20Forensics-06b6d4?style=for-the-badge\&logo=wireshark\&logoColor=white)
+![Blue Team](https://img.shields.io/badge/Blue%20Team-SOC%20Analyst-2563eb?style=for-the-badge&logo=securityscorecard&logoColor=white)
+![DFIR](https://img.shields.io/badge/DFIR-Incident%20Response-16a34a?style=for-the-badge&logo=windows&logoColor=white)
+![SIEM](https://img.shields.io/badge/SIEM-Splunk%20%7C%20Elastic-f97316?style=for-the-badge&logo=splunk&logoColor=white)
+![Threat Hunting](https://img.shields.io/badge/Threat%20Hunting-MITRE%20ATT%26CK-7c3aed?style=for-the-badge)
 
 </div>
 
 ---
 
-## 📌 About This Lab Repository
+## Tổng quan
 
-This folder contains hands-on **Blue Team investigation labs** focused on real-world SOC and DFIR workflows.
+Repository này tổng hợp các bài lab mình đã thực hành trong quá trình học Blue Team. Mỗi lab được viết theo hướng một case điều tra thực tế: bắt đầu từ scenario, phân tích log, truy vấn SIEM, lần theo dấu vết attacker và đưa ra câu trả lời dựa trên bằng chứng.
 
-Each lab is written like an incident response case study: starting from an alert, collecting evidence, analyzing logs, pivoting through artifacts, and mapping attacker behavior across the attack chain.
-
-The goal of this repository is not only to answer lab questions, but to build a strong investigation mindset:
+Mục tiêu không chỉ là hoàn thành câu hỏi của lab, mà còn rèn tư duy điều tra:
 
 > **Follow the evidence. Build the timeline. Understand the attack.**
 
----
+## Lab Index
 
-## 🧭 Lab Index
+| # | Lab | Chủ đề chính | Công cụ / dữ liệu | Trạng thái |
+| --- | --- | --- | --- | --- |
+| 1 | [Boss Of The SOC v1](./Lab/Boss%20Of%20The%20SOC%20v1%20Lab) | APT, website defacement, ransomware, kill chain | Splunk, web logs, Sysmon | Completed |
+| 2 | [ElasticCase](./Lab/ElasticCase%20Lab) | Malicious file, process tree, registry, PowerShell, pivoting | Elastic SIEM, Windows/Linux logs | Completed |
+| 3 | [FalconEye](./Lab/FalconEye%20Lab) | AD breach, BloodHound, privilege escalation, DCSync, Pass-the-Hash | Splunk, Sysmon, AD logs | Completed |
+| 4 | [GhostConnect - TA583](./Lab/GhostConnect%20_TA583_Lab) | Phishing link, PowerShell, browser artifacts, persistence, exfiltration | Splunk, endpoint telemetry | Completed |
+| 5 | [Kerberoasted](./Lab/Kerberoasted%20Lab) | Kerberoasting detection, Kerberos events, service ticket hunting | Splunk, DC logs, Sysmon | Completed |
+| 6 | [Poisoned PyTorch](./Lab/Poisoned%20PyTorch%20Lab) | Supply chain compromise, Python payload, domain activity, ransomware prep | Splunk, host artifacts | Completed |
+| 7 | [Rhysida - Vice Society](./Lab/Rhysida%20Lab) | Phishing, credential theft, persistence, lateral movement, ransomware | Splunk, Sysmon, Windows logs | Completed |
+| 8 | [ShadowRoast](./Lab/ShadowRoast%20Lab) | Initial access, registry persistence, AD activity, privilege escalation | Splunk, Windows/Sysmon logs | Completed |
+| 9 | [Tempest](./Lab/Tempest) | Malicious document, C2 traffic, EVTX timeline, network forensics | Wireshark, EvtxECmd, Timeline Explorer, CyberChef | Completed |
 
-| Lab                               | Scenario                                                                     | Main Skills                                      | Status      |
-| --------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------ | ----------- |
-| 🦠 [Rhysida Lab](./Rhysida%20Lab) | Phishing, credential theft, persistence, lateral movement, ransomware impact | Splunk, Sysmon, Windows Event Logs, MITRE ATT&CK | ✅ Completed |
-| 🌪️ [Tempest](./Tempest)          | Malicious document execution, C2 traffic, privilege escalation, persistence  | Wireshark, EVTX, CyberChef, Timeline Analysis    | ✅ Completed |
+## Nội dung chính
 
----
+- Phân tích log Windows Security, Sysmon, PowerShell và Active Directory.
+- Truy vấn SIEM bằng Splunk SPL và Elastic/KQL.
+- Điều tra process creation, command line, file creation, registry modification và network connection.
+- Dựng timeline tấn công từ initial access đến impact.
+- Tìm IOC: IP, domain, hash, username, hostname, file path và process ID.
+- Mapping hành vi attacker theo MITRE ATT&CK.
+- Viết báo cáo điều tra có bằng chứng rõ ràng bằng ảnh chụp và truy vấn.
 
-## 🔥 What You Will Practice
+## Kỹ năng thực hành
 
-### 🕵️ SOC Investigation
+| Nhóm kỹ năng | Nội dung |
+| --- | --- |
+| SOC Triage | Xác định alert, host, user, timestamp và phạm vi điều tra |
+| Windows Forensics | Security Event Log, Sysmon Event ID, process tree, registry, file activity |
+| Active Directory | Kerberoasting, DCSync, Pass-the-Hash, lateral movement, account compromise |
+| Network Forensics | HTTP/DNS analysis, C2 traffic, PCAP inspection, suspicious IP/domain pivoting |
+| Malware Behavior | Payload execution, persistence, credential access, defense evasion, ransomware impact |
+| Reporting | Ghi lại truy vấn, bằng chứng, câu trả lời và luồng tấn công một cách dễ theo dõi |
 
-* Alert triage
-* Event log analysis
-* Suspicious process investigation
-* Authentication review
-* Timeline reconstruction
-* Evidence-based conclusion writing
+## Tools
 
-### 🪟 Windows Forensics
+| Tool | Mục đích sử dụng |
+| --- | --- |
+| Splunk | Truy vấn, lọc và tương quan log trong các lab SOC |
+| Elastic SIEM | Điều tra endpoint, process, network và authentication events |
+| Sysmon | Theo dõi process creation, network connection, file/registry activity |
+| Wireshark | Phân tích PCAP và lưu lượng mạng |
+| EvtxECmd | Parse Windows EVTX sang CSV |
+| Timeline Explorer | Dựng và đọc timeline sự kiện |
+| CyberChef | Decode, deobfuscation, phân tích chuỗi và dữ liệu mã hóa |
+| MITRE ATT&CK | Mapping tactic/technique để hiểu hành vi attacker |
 
-* Sysmon Event ID analysis
-* Process creation tracking
-* Registry persistence hunting
-* File creation monitoring
-* Windows Security log investigation
-* PowerShell and command-line analysis
-
-### 🌐 Network Forensics
-
-* PCAP analysis
-* HTTP traffic inspection
-* DNS investigation
-* C2 communication discovery
-* Suspicious domain and IP pivoting
-
-### 🧬 Malware & Attack Behavior
-
-* Malicious document execution
-* Payload download behavior
-* Persistence mechanisms
-* Credential dumping traces
-* Remote access tool activity
-* Ransomware deployment indicators
-
----
-
-## 🧰 Tools Used
-
-| Tool                  | Purpose                                       |
-| --------------------- | --------------------------------------------- |
-| **Splunk**            | Searching and correlating Windows/Sysmon logs |
-| **Wireshark**         | PCAP and network traffic analysis             |
-| **EvtxECmd**          | Parsing Windows EVTX logs                     |
-| **Timeline Explorer** | Timeline-based log review                     |
-| **CyberChef**         | Decoding, deobfuscation, Base64 analysis      |
-| **VirusTotal**        | Hash and malware reputation checking          |
-| **MITRE ATT&CK**      | Mapping attacker techniques                   |
-
----
-
-## 🧩 Investigation Methodology
+## Phương pháp điều tra
 
 ```text
-Alert
-  ↓
+Alert / Scenario
+      |
+      v
 Initial Triage
-  ↓
-Identify Host / User / Time Range
-  ↓
-Analyze Process Tree
-  ↓
-Review Network Connections
-  ↓
-Check Persistence
-  ↓
-Hunt Credential Access
-  ↓
-Trace Lateral Movement
-  ↓
-Find Exfiltration / Impact
-  ↓
-Map to MITRE ATT&CK
-  ↓
-Write Findings
+      |
+      v
+Identify Host, User, Time Range
+      |
+      v
+Process / File / Registry Analysis
+      |
+      v
+Authentication & Network Review
+      |
+      v
+Persistence, Credential Access, Lateral Movement
+      |
+      v
+Impact / Exfiltration
+      |
+      v
+Timeline + Findings
 ```
 
----
-
-## 📚 Lab Structure
-
-Each lab usually contains:
+## Cấu trúc repository
 
 ```text
-Lab Name/
-├── README.md
-├── image.png
-├── image 1.png
-├── image 2.png
-└── ...
+Blue_Team_Lab/
+├── Lab/
+│   ├── Boss Of The SOC v1 Lab/
+│   ├── ElasticCase Lab/
+│   ├── FalconEye Lab/
+│   ├── GhostConnect _TA583_Lab/
+│   ├── Kerberoasted Lab/
+│   ├── Poisoned PyTorch Lab/
+│   ├── Rhysida Lab/
+│   ├── ShadowRoast Lab/
+│   └── Tempest/
+├── note.md
+└── README.md
 ```
 
-Inside each lab write-up, you can expect:
+Mỗi lab thường bao gồm:
 
-* Scenario description
-* Investigation questions
-* Useful queries
-* Screenshots as evidence
-* Analysis notes
-* Attack flow explanation
-* Final findings
+- File write-up Markdown.
+- Ảnh minh họa trong thư mục `images/` hoặc ảnh đi kèm lab.
+- Scenario, câu hỏi, truy vấn, bằng chứng và câu trả lời.
 
----
+## Tài liệu ghi chú
 
-## 🎯 Skills Matrix
+Ngoài các bài lab, repository còn có file [note.md](./note.md) dùng để tra cứu nhanh Windows Event ID, Sysmon Event ID và quy trình điều tra gợi ý khi phân tích log.
 
-| Skill Area              | Covered |
-| ----------------------- | ------- |
-| Initial Access Analysis | ✅       |
-| Execution Analysis      | ✅       |
-| Persistence Hunting     | ✅       |
-| Defense Evasion         | ✅       |
-| Credential Access       | ✅       |
-| Discovery               | ✅       |
-| Lateral Movement        | ✅       |
-| Command & Control       | ✅       |
-| Exfiltration            | ✅       |
-| Impact / Ransomware     | ✅       |
-
----
-
-## 🧠 Example Query Style
+## Ví dụ truy vấn thường dùng
 
 ```spl
 index=* source="XmlWinEventLog:Microsoft-Windows-Sysmon/Operational" EventCode=1
@@ -181,100 +146,25 @@ index=* EventCode=4624
 | sort 0 _time
 ```
 
----
+## Cách sử dụng
 
-## 🧬 MITRE ATT&CK Focus
-
-This repository focuses on identifying and explaining attacker behavior through MITRE ATT&CK techniques such as:
-
-| Tactic              | Example Behavior                              |
-| ------------------- | --------------------------------------------- |
-| Initial Access      | Phishing, malicious document                  |
-| Execution           | PowerShell, command-line execution            |
-| Persistence         | Startup folder, registry run keys             |
-| Defense Evasion     | Log clearing, disabling protection            |
-| Credential Access   | Dumping credentials, browser credential theft |
-| Discovery           | Host, user, network, and service discovery    |
-| Lateral Movement    | Remote execution and administrative tools     |
-| Command and Control | Beaconing, suspicious outbound traffic        |
-| Exfiltration        | Data staging and archive creation             |
-| Impact              | Ransomware execution                          |
-
----
-
-## 🚀 How To Use This Repository
-
-Clone the repository:
+Clone repository:
 
 ```bash
 git clone https://github.com/HuyVjpPro1806/Blue_Team_Lab.git
-cd Blue_Team_Lab/Lab
+cd Blue_Team_Lab
 ```
 
-Open any lab folder:
+Mở thư mục `Lab/`, chọn một bài lab và đọc file Markdown tương ứng. Nên đọc scenario trước, sau đó đi lần lượt từng câu hỏi để hiểu cách truy vấn, pivot và kết luận.
 
-```bash
-cd "Tempest"
-```
+## Ghi chú
 
-Read the investigation:
-
-```bash
-cat README.md
-```
-
-Or view directly on GitHub for screenshots and formatted analysis.
-
----
-
-## ✍️ Write-up Format I Follow
-
-For each investigation, I try to structure the analysis like this:
-
-```text
-1. What happened?
-2. Which artifact proves it?
-3. Which event ID or log source shows it?
-4. What fields are important?
-5. What Splunk query can find it?
-6. What does this mean in the attack chain?
-7. Which MITRE ATT&CK technique does it map to?
-```
-
----
-
-## 🏆 Goal
-
-This repository is part of my learning journey toward becoming a stronger **SOC Analyst / Blue Team practitioner**.
-
-The main objectives are:
-
-* Improve log analysis skills
-* Practice real-world investigation flow
-* Build strong Windows forensics fundamentals
-* Understand attacker behavior from evidence
-* Create clean and useful security write-ups
-
----
-
-## 👨‍💻 Author
-
-<div align="center">
-
-**HuyVjpPro1806**
-
-Blue Team Learner • SOC Analyst Path • Digital Forensics Enthusiast
-
-[![GitHub](https://img.shields.io/badge/GitHub-HuyVjpPro1806-181717?style=for-the-badge\&logo=github)](https://github.com/HuyVjpPro1806)
-
-</div>
+Nội dung trong repository chỉ phục vụ mục đích học tập, nghiên cứu phòng thủ và nâng cao kỹ năng điều tra an toàn thông tin. Các kỹ thuật tấn công được nhắc đến chỉ được trình bày trong bối cảnh phân tích, phát hiện và ứng phó sự cố.
 
 ---
 
 <div align="center">
 
-### ⭐ If this repository helps you, consider giving it a star!
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:22c55e,50:2563eb,100:0f172a&height=120&section=footer" />
+**Nếu repository hữu ích, hãy để lại một star để ủng hộ quá trình học Blue Team.**
 
 </div>
