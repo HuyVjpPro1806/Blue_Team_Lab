@@ -195,7 +195,7 @@ Hình 9: Chisel chuyển sang endpoint IP; các bản ghi tiếp theo cho thấy
 
 ## Credential Access
 
-### Tạo tệp nghi là memory dump và đổi tên thành Bookmarks
+### Tạo tệp nghi và đổi tên thành Bookmarks
 
 Sau cấu hình tunnel, hoạt động tiếp tục tập trung vào dữ liệu Microsoft Edge. Taskmgr.exe được khởi chạy từ Explorer lúc 12:22:15.091 (Hình 9). Dữ liệu J.csv xem bằng Timeline Explorer ghi nhận msedge.DMP được tạo trong Temp lúc 12:22:28, sau đó có các thay đổi DataExtend, DataOverwrite và Close, với bản ghi Close lúc 12:22:48 (Hình 10).
 
@@ -214,7 +214,7 @@ Lúc 12:23:04, tệp được đổi tên từ msedge.DMP thành Bookmarks. Đ�
 
 Hình 10: msedge.DMP được tạo, đổi tên thành Bookmarks rồi chuyển khỏi Temp.
 
-### Tìm chuỗi trong tệp Bookmarks
+### Tìm chuỗi trong Bookmarks
 
 Lúc 12:24:31.118, PowerShell được mở từ Explorer và gọi strings.exe lúc 12:24:42.421. Đến 12:25:06.145, công cụ được gọi với tệp đầu vào Bookmarks và tham số -n 8 (Hình 9, 11).
 
@@ -435,8 +435,6 @@ C:\Users\omar.hassan\Documents\Finance\Projects\FIFA_Account\proposal_review_tem
 
 Hình 22: Các target trong kết quả LECmd của profile omar.hassan, gồm tài liệu tài chính và dự án FIFA_Account.
 
-### Đánh giá partnership và chiến lược trong profile nour.khalil
-
 Chín đường dẫn dưới profile nour.khalil mở rộng phạm vi sang hợp đồng, đánh giá partnership và kế hoạch dự thầu. Các tên bid_evaluation_matrix_v2.xlsx, proposal_comparison_partners_2025.docx và bid_strategy_overview_2026.docx gợi nhóm tài liệu có liên quan trực tiếp đến việc xây dựng và đánh giá proposal (Hình 23).
 
 ```text
@@ -454,8 +452,6 @@ C:\Users\nour.khalil\Documents\Finance\Vendor_Contracts\Pending_Review\Review_Ch
 ![Hình 23](images/hinh-21-recent-documents-nour.png)
 
 Hình 23: Các target dưới profile nour.khalil liên quan đến hợp đồng, partnership và chiến lược dự thầu.
-
-### Hồ sơ FIFA trong profile dina.ramadan
 
 Bốn đường dẫn còn lại nằm dưới profile dina.ramadan. Các tên tệp gợi tài liệu về lịch sử dự thầu, phương pháp kỹ thuật và trao đổi với vendor. Hai tệp thuộc Vendor_Comms, còn Technical_Methodology_Overview.docx nằm trong Submissions của dự án FIFA (Hình 24).
 
